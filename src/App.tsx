@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Particles from "react-tsparticles";
+import type { Engine } from "tsparticles-engine";
+import { loadStarsPreset } from "tsparticles-preset-stars";
+import NavRoutes from "./Router";
+import NavBar from "./NavBar";
 
-function App() {
+const App = () => {
+  const customInit: (engine: Engine) => Promise<void> = async (
+    engine: Engine
+  ) => {
+    await loadStarsPreset(engine);
+  };
+
+  const options = {
+    preset: "stars",
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="app">
+      <Particles className="background" options={options} init={customInit} />
+      <header>
+        <NavBar></NavBar>
       </header>
+      <main>
+        <NavRoutes></NavRoutes>
+      </main>
     </div>
   );
-}
+};
 
 export default App;
