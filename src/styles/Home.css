@@ -1,0 +1,15 @@
+.carousel {
+  height: 100vh;
+}
+
+.slide-1 {
+  background: url("../../assets/images/image1.jpg") no-repeat 50% / cover;
+}
+
+.slide-2 {
+  background: url("../../assets/images/slide1.jpg") no-repeat 50% / cover;
+}
+
+.slide-3 {
+  background: url("../../assets/images/slide2.jpg") no-repeat 50% / cover;
+}

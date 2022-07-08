@@ -1,0 +1,14 @@
+.app {
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.background {
+  position: fixed;
+  z-index: -1;
+}
+
+.main {
+  flex-grow: 1;
+}
