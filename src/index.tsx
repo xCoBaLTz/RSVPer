@@ -1,25 +1,31 @@
-import React, { StrictMode } from "react";
+import {
+  createTheme,
+  responsiveFontSizes,
+  ThemeProvider,
+} from "@mui/material/styles";
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter as Router } from "react-router-dom";
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
+import { BrowserRouter as Router } from "react-router-dom";
+import App from "./components/App";
+import "./index.css";
 import store from "./redux/store";
-import { createTheme, ThemeProvider } from "@mui/material";
+import reportWebVitals from "./reportWebVitals";
 
 const root = createRoot(document.getElementById("root") as HTMLElement);
 
-const customTheme = createTheme({
-  palette: {
-    primary: {
-      main: "#3b0746",
+const customTheme = responsiveFontSizes(
+  createTheme({
+    palette: {
+      primary: {
+        main: "#3b0746",
+      },
+      secondary: {
+        main: "#d6b138",
+      },
     },
-    secondary: {
-      main: "#d1ab42",
-    },
-  },
-});
+  })
+);
 
 root.render(
   <StrictMode>
