@@ -1,13 +1,13 @@
 import { Typography } from "@mui/material";
 
-const Invitation = () => {
+const Proposal = () => {
   return (
-    <div className="invitation">
+    <div className="proposal">
       <Typography variant="h1" component="h1" color="primary.contrastText">
-        This is the Invitation Component
+        This is the Proposal Component
       </Typography>
     </div>
   );
 };
 
-export default Invitation;
+export default Proposal;

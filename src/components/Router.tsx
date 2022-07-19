@@ -1,10 +1,9 @@
 import { Route, Routes } from "react-router";
 import Contact from "./Contact";
-import Events from "./Events";
 import Home from "./Home";
 import Invitation from "./Invitation";
 import Login from "./Login";
-import OurStory from "./OurStory";
+import Proposal from "./Proposal";
 import Rsvp from "./Rsvp";
 
 const Router = () => {
@@ -14,8 +13,7 @@ const Router = () => {
     <>
       {sessionToken ? (
         <Routes>
-          <Route path="/events" element={<Events />} />
-          <Route path="/ourstory" element={<OurStory />} />
+          <Route path="/proposal" element={<Proposal />} />
           <Route path="/invitation" element={<Invitation />} />
           <Route path="/rsvp" element={<Rsvp />} />
           <Route path="/contact" element={<Contact />} />

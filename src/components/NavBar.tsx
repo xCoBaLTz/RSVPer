@@ -1,19 +1,13 @@
-import React from "react";
 import ResponsiveAppBar from "./ResponsiveAppBar";
-
-interface Props {
-  className?: string;
-}
 
 export interface NavItem {
   name: string;
   route: string;
 }
 
-const NavBar: React.FC<Props> = (props: Props) => {
+const NavBar = () => {
   const navItems: NavItem[] = [
-    { name: "Our Story", route: "/ourstory" },
-    { name: "Events", route: "/events" },
+    { name: "Proposal", route: "/proposal" },
     { name: "Invitation", route: "/invitation" },
     { name: "RSVP", route: "/rsvp" },
     { name: "Contact", route: "/contact" },

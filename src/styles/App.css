@@ -12,3 +12,11 @@
 .main {
   flex-grow: 1;
 }
+
+.proposal,
+.rsvp,
+.contact,
+.invitation {
+  flex-grow: 1;
+  padding-top: 80px;
+}
