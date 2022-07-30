@@ -6,11 +6,12 @@ import {
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import App from "./components/App";
 import "./index.css";
 import store from "./redux/store";
 import reportWebVitals from "./reportWebVitals";
+import { Routes } from "react-router";
 
 const root = createRoot(document.getElementById("root") as HTMLElement);
 
@@ -29,13 +30,16 @@ const customTheme = responsiveFontSizes(
 
 root.render(
   <StrictMode>
-    <Router>
-      <Provider store={store}>
+    <Provider store={store}>
+      <BrowserRouter>
         <ThemeProvider theme={customTheme}>
+          {/*<Routes>*/}
+          {/*  <Route path="/*" element={} />*/}
+          {/*</Routes>*/}
           <App />
         </ThemeProvider>
-      </Provider>
-    </Router>
+      </BrowserRouter>
+    </Provider>
   </StrictMode>
 );
 

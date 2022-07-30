@@ -16,7 +16,8 @@
 .proposal,
 .rsvp,
 .contact,
-.invitation {
-  flex-grow: 1;
+.invitation,
+.login {
   padding-top: 80px;
+  flex-grow: 1;
 }

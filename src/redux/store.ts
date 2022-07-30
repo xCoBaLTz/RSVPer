@@ -1,23 +1,19 @@
 import { configureStore } from "@reduxjs/toolkit";
-import createSagaMiddleware from "redux-saga";
-import counterReducer from "./slices/counter";
-import usersReducer from "./slices/users";
-import { watchSaga } from "./sagas/rootSaga";
+import counterReducer from "./slices/counterSlice";
+import authReducer from "./slices/authSlice";
+import apiSlice, { apiReducer } from "../api/apiSlice";
 
-const sagaMiddleware = createSagaMiddleware();
 const store = configureStore({
   reducer: {
+    api: apiReducer,
     counter: counterReducer,
-    users: usersReducer,
+    auth: authReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware),
+    getDefaultMiddleware().concat(apiSlice.middleware),
+  devTools: true,
 });
 
-sagaMiddleware.run(watchSaga);
-
 export default store;
-// Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;

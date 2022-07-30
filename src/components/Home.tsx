@@ -11,7 +11,8 @@ const Home = () => {
       stopOnHover={false}
       swipeable={true}
       showThumbs={false}
-      useKeyboardArrows={true}>
+      useKeyboardArrows={true}
+    >
       <div className="carousel slide-1"></div>
       <div className="carousel slide-2"></div>
       <div className="carousel slide-3"></div>
