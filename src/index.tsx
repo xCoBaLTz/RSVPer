@@ -19,10 +19,10 @@ const customTheme = responsiveFontSizes(
   createTheme({
     palette: {
       primary: {
-        main: "#000000",
+        main: "#000",
       },
       secondary: {
-        main: "#1b5e20",
+        main: "#fff",
       },
     },
   })

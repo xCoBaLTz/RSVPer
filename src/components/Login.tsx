@@ -3,20 +3,21 @@ import {
   ChangeEventHandler,
   FormEvent,
   FormEventHandler,
-  useEffect,
   useState,
 } from "react";
 import { useAppDispatch } from "../redux/hooks";
 import { useNavigate } from "react-router-dom";
 
 import {
+  Alert,
   Box,
   Button,
-  InputLabel,
+  InputAdornment,
   Paper,
   TextField,
   Typography,
 } from "@mui/material";
+import EmailIcon from "@mui/icons-material/Email";
 
 import { useLoginMutation } from "../api/authApiSlice";
 import { setToken } from "../redux/slices/authSlice";
@@ -29,15 +30,10 @@ const Login = () => {
   const [login] = useLoginMutation();
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    return () => {
-      setErrMessage("");
-    };
-  }, [email]);
-
   const handleEmailChange: ChangeEventHandler<HTMLInputElement> = (
     event: ChangeEvent<HTMLInputElement>
   ) => {
+    setErrMessage("");
     setEmail(event.target.value);
   };
 
@@ -54,7 +50,6 @@ const Login = () => {
         navigate("/rsvp");
       })
       .catch((error) => {
-        alert(error.data.detail);
         setErrMessage(error.data.detail);
         setEmail("");
       });
@@ -66,41 +61,84 @@ const Login = () => {
       sx={{
         height: "90vh",
         display: "flex",
+        flexFlow: "column nowrap",
         justifyContent: "center",
         alignItems: "center",
       }}
     >
+      {errMessage ? (
+        <Alert
+          severity="error"
+          sx={{
+            backgroundColor: "rgb(22 11 11)",
+            color: "rgb(244 199 199)",
+            margin: 2,
+            minWidth: { xs: "90vw", md: "55vw", lg: "45vw" },
+          }}
+          onClose={() => {
+            setErrMessage("");
+          }}
+        >
+          {errMessage}
+        </Alert>
+      ) : (
+        <></>
+      )}
       <Paper
+        className="login-wrapper"
         sx={{
           height: "60vh",
-          minWidth: { md: "", lg: "45vw" },
-          backgroundColor: "primary.contrastText",
+          minWidth: { xs: "100vw", md: "60vw", lg: "50vw" },
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
         }}
       >
-        <form onSubmit={handleSubmit}>
+        <Box
+          component="form"
+          onSubmit={handleSubmit}
+          sx={{
+            display: "flex",
+            width: "50%",
+            flexFlow: "column nowrap",
+            alignItems: "flex-start",
+          }}
+        >
           <Typography
             variant="h4"
             component="h4"
+            fontWeight="bold"
             fontFamily="BickleyScriptRegular"
           >
             Please enter your email:
           </Typography>
           <TextField
+            sx={{ marginTop: 3 }}
             required
             fullWidth
+            autoFocus
             value={email}
             onChange={handleEmailChange}
             type="email"
             label="Email"
             variant="outlined"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <EmailIcon />
+                </InputAdornment>
+              ),
+            }}
           />
-          <Button type="submit" variant="contained" disabled={!email}>
+          <Button
+            sx={{ marginTop: 1 }}
+            type="submit"
+            variant="contained"
+            disabled={!email}
+          >
             Submit
           </Button>
-        </form>
+        </Box>
       </Paper>
     </Box>
   );

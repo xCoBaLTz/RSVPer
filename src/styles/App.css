@@ -26,3 +26,14 @@
   text-decoration: none;
   color: inherit;
 }
+
+.login-form {
+  display: flex;
+  width: 50%;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+}
+
+.login-wrapper {
+  background: url("../../assets/images/wallpaper2.jpeg")  no-repeat 50% / cover;
+}
