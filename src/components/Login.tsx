@@ -1,4 +1,3 @@
-import "../styles/Login.css";
 import {
   ChangeEvent,
   ChangeEventHandler,
@@ -9,6 +8,16 @@ import {
 } from "react";
 import { useAppDispatch } from "../redux/hooks";
 import { useNavigate } from "react-router-dom";
+
+import {
+  Box,
+  Button,
+  InputLabel,
+  Paper,
+  TextField,
+  Typography,
+} from "@mui/material";
+
 import { useLoginMutation } from "../api/authApiSlice";
 import { setToken } from "../redux/slices/authSlice";
 
@@ -42,34 +51,58 @@ const Login = () => {
       .then((response) => {
         dispatch(setToken({ ...response }));
         setEmail("");
-        navigate("/home");
+        navigate("/rsvp");
       })
       .catch((error) => {
-        console.log(error);
-        // setErrMessage(error.);
+        alert(error.data.detail);
+        setErrMessage(error.data.detail);
+        setEmail("");
       });
   };
 
   return (
-    <div className="login">
-      <form onSubmit={handleSubmit}>
-        <div className="email-wrapper">
-          <label className="label">
-            <span className="label-text">PLEASE ENTER YOUR EMAIL:</span>
-          </label>
-          <input
+    <Box
+      className="login"
+      sx={{
+        height: "90vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Paper
+        sx={{
+          height: "60vh",
+          minWidth: { md: "", lg: "45vw" },
+          backgroundColor: "primary.contrastText",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <form onSubmit={handleSubmit}>
+          <Typography
+            variant="h4"
+            component="h4"
+            fontFamily="BickleyScriptRegular"
+          >
+            Please enter your email:
+          </Typography>
+          <TextField
+            required
+            fullWidth
             value={email}
             onChange={handleEmailChange}
             type="email"
-            placeholder="Email:"
-            required
+            label="Email"
+            variant="outlined"
           />
-        </div>
-        <div className="submit-wrapper">
-          <button type="submit">Submit</button>
-        </div>
-      </form>
-    </div>
+          <Button type="submit" variant="contained" disabled={!email}>
+            Submit
+          </Button>
+        </form>
+      </Paper>
+    </Box>
   );
 };
 

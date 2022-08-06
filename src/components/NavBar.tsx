@@ -7,7 +7,7 @@ export interface NavItem {
 
 const NavBar = () => {
   const navItems: NavItem[] = [
-    { name: "Home", route: "/home" },
+    { name: "Home", route: "" },
     { name: "Proposal", route: "/proposal" },
     { name: "Invitation", route: "/invitation" },
     { name: "RSVP", route: "/rsvp" },

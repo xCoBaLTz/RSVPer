@@ -1,8 +1,9 @@
 import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 import "../styles/Home.css";
 
 const Home = () => {
+  const imageArray: number[] = [1, 2, 3];
   return (
     <Carousel
       showStatus={false}
@@ -13,9 +14,9 @@ const Home = () => {
       showThumbs={false}
       useKeyboardArrows={true}
     >
-      <div className="carousel slide-1"></div>
-      <div className="carousel slide-2"></div>
-      <div className="carousel slide-3"></div>
+      {imageArray.map((value: number) => (
+        <div key={value} className={`carousel slide-${value}`}></div>
+      ))}
     </Carousel>
   );
 };

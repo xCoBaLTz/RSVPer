@@ -19,10 +19,10 @@ const customTheme = responsiveFontSizes(
   createTheme({
     palette: {
       primary: {
-        main: "#3b0746",
+        main: "#000000",
       },
       secondary: {
-        main: "#d6b138",
+        main: "#1b5e20",
       },
     },
   })
@@ -33,9 +33,6 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <ThemeProvider theme={customTheme}>
-          {/*<Routes>*/}
-          {/*  <Route path="/*" element={} />*/}
-          {/*</Routes>*/}
           <App />
         </ThemeProvider>
       </BrowserRouter>

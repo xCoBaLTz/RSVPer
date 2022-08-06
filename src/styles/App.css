@@ -18,6 +18,11 @@
 .contact,
 .invitation,
 .login {
-  padding-top: 80px;
+  margin-top: 80px;
   flex-grow: 1;
+}
+
+.title-button {
+  text-decoration: none;
+  color: inherit;
 }

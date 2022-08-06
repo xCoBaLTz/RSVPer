@@ -1,24 +1,28 @@
+import { NavItem } from "./NavBar";
+
 import { useState, MouseEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import MenuIcon from "@mui/icons-material/Menu";
-import { Button, IconButton, Menu, MenuItem } from "@mui/material";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-
-import { NavItem } from "./NavBar";
+import {
+  Button,
+  IconButton,
+  Menu,
+  MenuItem,
+  AppBar,
+  Box,
+  Container,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 
 interface Props {
   navItems: NavItem[];
 }
 
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
-
 const ResponsiveAppBar = (props: Props) => {
   const { navItems } = props;
+  const navigate = useNavigate();
 
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
@@ -30,49 +34,52 @@ const ResponsiveAppBar = (props: Props) => {
     setAnchorElNav(null);
   };
 
+  const handleClickNavMenu = (route: string) => {
+    handleCloseNavMenu();
+    navigate(route);
+  };
+
   return (
-    <AppBar position="fixed" sx={{ m: "auto" }}>
+    <AppBar
+      position="fixed"
+      sx={{ backgroundColor: "primary.main", m: "auto" }}
+    >
       <Container sx={{ maxWidth: { xs: "lg", md: "xl" } }}>
         <Toolbar disableGutters>
-          <Typography
-            variant="h2"
-            component="h2"
-            sx={{
-              display: "flex",
-              fontFamily: "BickleyScriptRegular",
-              flexGrow: 1,
-              justifyContent: "flex-start",
-              color: "secondary.main",
-            }}
-          >
-            <Link
-              to="/home"
-              style={{ textDecoration: "none", color: "inherit" }}
+          <Link to="" className="title-button">
+            <Typography
+              variant="h2"
+              component="h2"
+              fontFamily="BickleyScriptRegular"
+              color="primary.contrastText"
             >
               Seanan & Sonia
-            </Link>
-          </Typography>
-
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            </Typography>
+          </Link>
+          <Box
+            sx={{
+              display: { xs: "none", md: "flex" },
+              flexGrow: 1,
+              justifyContent: "flex-end",
+            }}
+          >
             {props.navItems.map((navItem) => (
               <Button
                 key={navItem.name}
-                onClick={handleCloseNavMenu}
+                onClick={(event) => handleClickNavMenu(navItem.route)}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                <Link
-                  style={{
-                    textDecoration: "none",
-                    color: "inherit",
-                  }}
-                  to={navItem.route}
-                >
-                  {navItem.name}
-                </Link>
+                {navItem.name}
               </Button>
             ))}
           </Box>
-          <Box sx={{ display: { xs: "flex", md: "none" } }}>
+          <Box
+            sx={{
+              display: { xs: "flex", md: "none" },
+              flexGrow: 1,
+              justifyContent: "flex-end",
+            }}
+          >
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -102,15 +109,11 @@ const ResponsiveAppBar = (props: Props) => {
               }}
             >
               {navItems.map((navItem) => (
-                <MenuItem key={navItem.name} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">
-                    <Link
-                      style={{ textDecoration: "none", color: "inherit" }}
-                      to={navItem.route}
-                    >
-                      {navItem.name}
-                    </Link>
-                  </Typography>
+                <MenuItem
+                  key={navItem.name}
+                  onClick={() => handleClickNavMenu(navItem.route)}
+                >
+                  <Typography textAlign="center">{navItem.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
