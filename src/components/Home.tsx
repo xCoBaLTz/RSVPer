@@ -9,6 +9,7 @@ const Home = () => {
       showStatus={false}
       infiniteLoop={true}
       autoPlay={true}
+      autoFocus={true}
       stopOnHover={false}
       swipeable={true}
       showThumbs={false}

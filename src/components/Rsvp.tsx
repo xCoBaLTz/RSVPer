@@ -50,15 +50,26 @@ const Rsvp = () => {
           >
             {invite.firstName}
           </Typography>
-          <Button
-            onClick={() => handleRsvpChange(invite, !invite.rsvpStatus)}
-            sx={{ marginTop: 1 }}
-            type="button"
-            variant="contained"
-            color="secondary"
-          >
-            Submit
-          </Button>
+          <Box>
+            <Button
+              onClick={() => handleRsvpChange(invite, true)}
+              sx={{ marginTop: 1 }}
+              type="button"
+              variant="contained"
+              color="secondary"
+            >
+              Yes
+            </Button>
+            <Button
+              onClick={() => handleRsvpChange(invite, false)}
+              sx={{ marginTop: 1 }}
+              type="button"
+              variant="contained"
+              color="secondary"
+            >
+              No
+            </Button>
+          </Box>
         </Box>
       );
     });
