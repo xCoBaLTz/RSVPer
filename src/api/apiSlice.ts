@@ -17,6 +17,7 @@ const baseQuery = fetchBaseQuery({
 
 const apiSlice = createApi({
   baseQuery,
+  tagTypes: ["Invite"],
   endpoints: (builder) => ({}),
 });
 

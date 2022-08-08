@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import AuthState from "../interfaces/authType";
+import AuthState from "../interfaces/authState";
 import { RootState } from "../store";
 
 const initialState: AuthState = {
@@ -12,10 +12,10 @@ const authSlice = createSlice({
   reducers: {
     setToken: (
       state,
-      action: PayloadAction<{ access_token: string; token_type: string }>
+      action: PayloadAction<{ accessToken: string; tokenType: string }>
     ) => {
-      const { access_token } = action.payload;
-      state.token = access_token;
+      const { accessToken } = action.payload;
+      state.token = accessToken;
     },
   },
 });

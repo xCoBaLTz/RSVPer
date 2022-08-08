@@ -1,13 +1,87 @@
-import { Typography } from "@mui/material";
+import {
+  Alert,
+  Box,
+  Button,
+  CircularProgress,
+  Typography,
+} from "@mui/material";
+import { useState } from "react";
+import {
+  useGetInvitesQuery,
+  useUpdateInviteMutation,
+} from "../api/inviteApiSlice";
+import { Invite } from "../redux/interfaces/inviteState";
 
 const Rsvp = () => {
-  return (
-    <div className="rsvp">
-      <Typography variant="h1" component="h1" color="primary.contrastText">
-        This is the RSVP Component
-      </Typography>
-    </div>
-  );
+  let { data, isLoading, isSuccess, isError, error } = useGetInvitesQuery();
+
+  const [updateInvite] = useUpdateInviteMutation();
+
+  const [errMessage, setErrMessage] = useState("");
+
+  const handleRsvpChange = (invite: Invite, status: boolean) => {
+    const newInvite = {
+      id: invite.id,
+      firstName: invite.firstName,
+      lastName: invite.lastName,
+      rsvpStatus: status,
+    } as Invite;
+
+    updateInvite(newInvite)
+      .unwrap()
+      .catch((error) => {
+        setErrMessage(error.data.detail);
+      });
+  };
+
+  let content;
+
+  if (isLoading) {
+    content = <CircularProgress></CircularProgress>;
+  } else if (isSuccess) {
+    content = data?.map((invite: Invite, index: number) => {
+      return (
+        <Box component="div">
+          <Typography
+            key={index}
+            variant="h1"
+            component="h1"
+            color="primary.contrastText"
+          >
+            {invite.firstName}
+          </Typography>
+          <Button
+            onClick={() => handleRsvpChange(invite, !invite.rsvpStatus)}
+            sx={{ marginTop: 1 }}
+            type="button"
+            variant="contained"
+            color="secondary"
+          >
+            Submit
+          </Button>
+        </Box>
+      );
+    });
+  } else if (isError) {
+    content = (
+      <Alert
+        severity="error"
+        sx={{
+          backgroundColor: "rgb(22 11 11)",
+          color: "rgb(244 199 199)",
+          margin: 2,
+          minWidth: { xs: "90vw", md: "55vw", lg: "45vw" },
+        }}
+        onClose={() => {
+          setErrMessage("");
+        }}
+      >
+        {errMessage}
+      </Alert>
+    );
+  }
+
+  return <div className="rsvp">{content}</div>;
 };
 
 export default Rsvp;
