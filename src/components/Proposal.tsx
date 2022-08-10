@@ -36,7 +36,15 @@ const Proposal = () => {
     },
   ];
   return (
-    <div className="proposal">
+    <Box
+      component="div"
+      minHeight="90vh"
+      display="flex"
+      flexDirection="column"
+      flexWrap="nowrap"
+      alignItems="center"
+      marginTop="80px"
+    >
       <Typography
         variant="h1"
         component="h1"
@@ -67,18 +75,18 @@ const Proposal = () => {
       >
         {imagesArray.map((image: Image, index: number) => (
           <Grid key={index}>
-            <div className="card">
-              <div className="card__face card__face--front">
+            <Box component="div" className="card">
+              <Box component="div" className="card__face card__face--front">
                 <Box component="img" src={image.src} alt={image.alt} />
-              </div>
-              <div className="card__face card__face--back">
+              </Box>
+              <Box component="div" className="card__face card__face--back">
                 <Box component="img" src={image.srcBack} alt={image.altBack} />
-              </div>
-            </div>
+              </Box>
+            </Box>
           </Grid>
         ))}
       </Grid>
-    </div>
+    </Box>
   );
 };
 

@@ -1,4 +1,4 @@
-import { Alert, FormControlLabel, Stack, Typography } from "@mui/material";
+import { Alert, Box, FormControlLabel, Stack, Typography } from "@mui/material";
 import { useState } from "react";
 import {
   useGetInvitesQuery,
@@ -37,7 +37,7 @@ const Rsvp = () => {
   };
 
   return (
-    <div className="rsvp">
+    <Box component="div" marginTop="80px">
       <Stack
         minHeight="60vh"
         direction="column"
@@ -67,7 +67,7 @@ const Rsvp = () => {
           color="primary.contrastText"
           fontFamily="BickleyScriptRegular"
         >
-          Six o' clock
+          Six O' Clock
         </Typography>
 
         {errMessage ? (
@@ -131,7 +131,7 @@ const Rsvp = () => {
           Kindly submit your response by September 5, 2022
         </Typography>
       </Stack>
-    </div>
+    </Box>
   );
 };
 

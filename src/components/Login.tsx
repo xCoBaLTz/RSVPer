@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 
 import {
   Alert,
-  alpha,
   Button,
   InputAdornment,
   Paper,
@@ -22,8 +21,6 @@ import EmailIcon from "@mui/icons-material/Email";
 
 import { useLoginMutation } from "../api/authApiSlice";
 import { setToken } from "../redux/slices/authSlice";
-import CustomTextField from "./CustomTextField";
-import { red } from "@mui/material/colors";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -64,7 +61,7 @@ const Login = () => {
       direction="column"
       justifyContent="center"
       alignItems="center"
-      className="login"
+      marginTop="80px"
     >
       {errMessage ? (
         <Alert
@@ -85,13 +82,14 @@ const Login = () => {
         <></>
       )}
       <Paper
+        className="login-wrapper"
         sx={{
           height: "60vh",
           minWidth: { xs: "100vw", md: "60vw", lg: "50vw" },
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: alpha("#fff", 0.5),
+          backgroundImage: `url("../../public/assets/images/wallpaper.jpeg")  no-repeat 50% / cover)`,
         }}
       >
         <Stack

@@ -14,6 +14,7 @@ import Contact from "./Contact";
 import Home from "./Home";
 import Login from "./Login";
 import RequireAuth from "./RequireAuth";
+import { Box } from "@mui/material";
 
 const App = () => {
   const customInit: (engine: Engine) => Promise<void> = async (
@@ -27,12 +28,18 @@ const App = () => {
   };
 
   return (
-    <div className="app">
+    <Box
+      component="div"
+      display="flex"
+      height="100%"
+      flexDirection="column"
+      flexWrap="nowrap"
+    >
       <Particles className="background" options={options} init={customInit} />
-      <div className="nav-bar">
+      <Box component="div">
         <NavBar></NavBar>
-      </div>
-      <div className="main">
+      </Box>
+      <Box component="div">
         <Routes>
           <Route index element={<Home />} />
           <Route path="/proposal" element={<Proposal />} />
@@ -43,8 +50,8 @@ const App = () => {
             <Route path="/rsvp" element={<Rsvp />} />
           </Route>
         </Routes>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 

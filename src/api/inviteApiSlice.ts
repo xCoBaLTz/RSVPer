@@ -5,7 +5,7 @@ export const inviteApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getInvites: builder.query<Invite[], void>({
       query: () => "/invites",
-      providesTags: (result, error, arg) =>
+      providesTags: (result) =>
         result
           ? [
               ...result.map(({ id }) => ({ type: "Invite" as const, id })),

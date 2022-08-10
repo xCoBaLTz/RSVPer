@@ -3,13 +3,12 @@ import { Box, Typography } from "@mui/material";
 const Invitation = () => {
   return (
     <Box
-      className="invitation"
-      sx={{
-        display: "flex",
-        flexFlow: "row wrap",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
+      component="div"
+      display="flex"
+      flexWrap="wrap"
+      alignItems="center"
+      justifyContent="center"
+      marginTop="80px"
     >
       <Typography
         variant="h1"
@@ -36,7 +35,7 @@ const Invitation = () => {
           display: "flex",
           justifyContent: "center",
           paddingLeft: { xs: 0, sm: 2 },
-          paddingRight: { xs: 0, md: 10, lg: 20 },
+          paddingRight: { xs: 0, md: 10, lg: 40 },
         }}
       >
         <iframe

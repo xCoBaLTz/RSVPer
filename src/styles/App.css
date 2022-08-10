@@ -1,25 +1,6 @@
-.app {
-  height: 100%;
-  display: flex;
-  flex-flow: column nowrap;
-}
-
 .background {
   position: fixed;
   z-index: -1;
-}
-
-.main {
-  flex-grow: 1;
-}
-
-.proposal,
-.rsvp,
-.contact,
-.invitation,
-.login {
-  margin-top: 80px;
-  flex-grow: 1;
 }
 
 .title-button {
@@ -27,14 +8,6 @@
   color: inherit;
 }
 
-.login-form {
-  display: flex;
-  width: 50%;
-  flex-flow: column nowrap;
-  align-items: flex-start;
-}
-
 .login-wrapper {
-  opacity: 0.5;
-  background: url("../../public/assets/images/wallpaper2.jpeg")  no-repeat 50% / cover;
+  background: url("../../public/assets/images/wallpaper.jpeg")  no-repeat 50% / cover;
 }

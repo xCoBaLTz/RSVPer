@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import { RootState } from "../redux/store";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "rsvper:8000",
+  baseUrl: "https://api.seananandsonia.com",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
@@ -18,7 +18,7 @@ const baseQuery = fetchBaseQuery({
 const apiSlice = createApi({
   baseQuery,
   tagTypes: ["Invite"],
-  endpoints: (builder) => ({}),
+  endpoints: () => ({}),
 });
 
 export default apiSlice;
