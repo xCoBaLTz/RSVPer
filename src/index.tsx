@@ -25,6 +25,9 @@ const customTheme = responsiveFontSizes(
         main: "#fff",
       },
     },
+    typography: {
+      fontFamily: ["Rajdhani-Regular", "serif"].join(","),
+    },
   })
 );
 

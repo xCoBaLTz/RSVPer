@@ -35,5 +35,6 @@
 }
 
 .login-wrapper {
-  background: url("../../assets/images/wallpaper2.jpeg")  no-repeat 50% / cover;
+  opacity: 0.5;
+  background: url("../../public/assets/images/wallpaper2.jpeg")  no-repeat 50% / cover;
 }

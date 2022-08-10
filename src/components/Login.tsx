@@ -10,10 +10,11 @@ import { useNavigate } from "react-router-dom";
 
 import {
   Alert,
-  Box,
+  alpha,
   Button,
   InputAdornment,
   Paper,
+  Stack,
   TextField,
   Typography,
 } from "@mui/material";
@@ -21,6 +22,8 @@ import EmailIcon from "@mui/icons-material/Email";
 
 import { useLoginMutation } from "../api/authApiSlice";
 import { setToken } from "../redux/slices/authSlice";
+import CustomTextField from "./CustomTextField";
+import { red } from "@mui/material/colors";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -56,15 +59,12 @@ const Login = () => {
   };
 
   return (
-    <Box
+    <Stack
+      minHeight="90vh"
+      direction="column"
+      justifyContent="center"
+      alignItems="center"
       className="login"
-      sx={{
-        height: "90vh",
-        display: "flex",
-        flexFlow: "column nowrap",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
     >
       {errMessage ? (
         <Alert
@@ -85,23 +85,21 @@ const Login = () => {
         <></>
       )}
       <Paper
-        className="login-wrapper"
         sx={{
           height: "60vh",
           minWidth: { xs: "100vw", md: "60vw", lg: "50vw" },
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          backgroundColor: alpha("#fff", 0.5),
         }}
       >
-        <Box
+        <Stack
           component="form"
           onSubmit={handleSubmit}
+          alignItems="flex-start"
           sx={{
-            display: "flex",
-            width: "50%",
-            flexFlow: "column nowrap",
-            alignItems: "flex-start",
+            minWidth: { xs: "75vw", md: "35vw", lg: "25vw" },
           }}
         >
           <Typography
@@ -113,7 +111,7 @@ const Login = () => {
             Please enter your email:
           </Typography>
           <TextField
-            sx={{ marginTop: 3 }}
+            sx={{ marginTop: 1 }}
             required
             fullWidth
             autoFocus
@@ -138,9 +136,9 @@ const Login = () => {
           >
             Submit
           </Button>
-        </Box>
+        </Stack>
       </Paper>
-    </Box>
+    </Stack>
   );
 };
 

@@ -66,8 +66,13 @@ const ResponsiveAppBar = (props: Props) => {
             {props.navItems.map((navItem) => (
               <Button
                 key={navItem.name}
-                onClick={(event) => handleClickNavMenu(navItem.route)}
-                sx={{ my: 2, color: "white", display: "block" }}
+                onClick={() => handleClickNavMenu(navItem.route)}
+                sx={{
+                  my: 2,
+                  color: "white",
+                  display: "block",
+                  fontSize: "1.15rem",
+                }}
               >
                 {navItem.name}
               </Button>

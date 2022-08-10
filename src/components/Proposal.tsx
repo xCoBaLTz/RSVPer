@@ -1,5 +1,5 @@
 import "../styles/Proposal.css";
-import { Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 
 interface Image {
   src: string;
@@ -11,40 +11,28 @@ interface Image {
 const Proposal = () => {
   const imagesArray: Image[] = [
     {
-      src: "https://i.loli.net/2019/11/23/cnKl1Ykd5rZCVwm.jpg",
-      srcBack: "https://i.loli.net/2019/11/23/cnKl1Ykd5rZCVwm.jpg",
+      src: "/assets/images/proposal1-min.jpeg",
       alt: "Proposal picture 1",
+      srcBack: "/assets/images/proposal1-back-min.jpeg",
       altBack: "Proposal picture 1 back",
     },
     {
-      src: "https://i.loli.net/2019/11/23/cnKl1Ykd5rZCVwm.jpg",
-      srcBack: "https://i.loli.net/2019/11/23/cnKl1Ykd5rZCVwm.jpg",
-      alt: "Proposal picture 1",
-      altBack: "Proposal picture 1 back",
+      src: "/assets/images/proposal2-min.jpeg",
+      alt: "Proposal picture 2",
+      srcBack: "/assets/images/proposal2-back-min.jpeg",
+      altBack: "Proposal picture 2 back",
     },
     {
-      src: "https://i.loli.net/2019/11/23/cnKl1Ykd5rZCVwm.jpg",
-      srcBack: "https://i.loli.net/2019/11/23/cnKl1Ykd5rZCVwm.jpg",
-      alt: "Proposal picture 1",
-      altBack: "Proposal picture 1 back",
+      src: "/assets/images/proposal3-min.jpeg",
+      alt: "Proposal picture 3",
+      srcBack: "/assets/images/proposal3-back-min.jpeg",
+      altBack: "Proposal picture 3 back",
     },
     {
-      src: "https://i.loli.net/2019/11/23/cnKl1Ykd5rZCVwm.jpg",
-      srcBack: "https://i.loli.net/2019/11/23/cnKl1Ykd5rZCVwm.jpg",
-      alt: "Proposal picture 1",
-      altBack: "Proposal picture 1 back",
-    },
-    {
-      src: "https://i.loli.net/2019/11/23/cnKl1Ykd5rZCVwm.jpg",
-      srcBack: "https://i.loli.net/2019/11/23/cnKl1Ykd5rZCVwm.jpg",
-      alt: "Proposal picture 1",
-      altBack: "Proposal picture 1 back",
-    },
-    {
-      src: "https://i.loli.net/2019/11/23/cnKl1Ykd5rZCVwm.jpg",
-      srcBack: "https://i.loli.net/2019/11/23/cnKl1Ykd5rZCVwm.jpg",
-      alt: "Proposal picture 1",
-      altBack: "Proposal picture 1 back",
+      src: "/assets/images/proposal4-min.jpeg",
+      alt: "Proposal picture 4",
+      srcBack: "/assets/images/proposal4-back-min.jpeg",
+      altBack: "Proposal picture 4 back",
     },
   ];
   return (
@@ -60,8 +48,8 @@ const Proposal = () => {
         The Proposal
       </Typography>
       <Typography
-        variant="h4"
-        component="h4"
+        variant="h3"
+        component="h3"
         sx={{
           fontFamily: "BickleyScriptRegular",
           color: "primary.contrastText",
@@ -81,10 +69,10 @@ const Proposal = () => {
           <Grid key={index}>
             <div className="card">
               <div className="card__face card__face--front">
-                <img src={image.src} alt={image.alt} />
+                <Box component="img" src={image.src} alt={image.alt} />
               </div>
               <div className="card__face card__face--back">
-                <img src={image.srcBack} alt={image.altBack} />
+                <Box component="img" src={image.srcBack} alt={image.altBack} />
               </div>
             </div>
           </Grid>

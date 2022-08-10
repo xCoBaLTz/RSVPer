@@ -1,6 +1,11 @@
 @font-face {
   font-family: BickleyScriptRegular;
-  src: url("../assets/font/BickleyScriptRegular.ttf");
+  src: url("../public/assets/font/BickleyScriptRegular.ttf");
+}
+
+@font-face {
+  font-family: Rajdhani-Regular;
+  src: url("../public/assets/font/Rajdhani-Regular.ttf");
 }
 
 html,
