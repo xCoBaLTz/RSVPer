@@ -4,6 +4,10 @@ img {
     object-fit: cover;
 }
 
+.scene {
+    perspective: 800px;
+}
+
 .card {
     position: relative;
     width: 240px;
@@ -15,10 +19,10 @@ img {
 }
 
 .card:hover {
-     transform: rotateY(0.5turn);
+    transform: rotateY(180deg);
  }
 
-.card__face {
+.card_face {
     position: absolute;
     top: 0;
     left: 0;
@@ -28,6 +32,6 @@ img {
     transition: 1s ease-in-out;
 }
 
-.card__face--back {
-    transform: rotateY(0.5turn);
+.card_face-back {
+    transform: rotateY(180deg);
  }

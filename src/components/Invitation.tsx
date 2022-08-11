@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 
 const Invitation = () => {
   return (
@@ -39,7 +39,7 @@ const Invitation = () => {
         }}
       >
         <iframe
-          src="https://player.vimeo.com/video/737038045?h=f1f5e8e2d5&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1"
+          src="https://player.vimeo.com/video/737038045?h=f1f5e8e2d5&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;playsinline=0"
           width="412"
           height="732"
           frameBorder="0"
@@ -48,6 +48,24 @@ const Invitation = () => {
           title="Engagement Invitation"
         ></iframe>
       </Box>
+      <Stack
+        width="100%"
+        bottom={0}
+        left={0}
+        right={0}
+        justifyContent="center"
+        alignItems="flex-end"
+      >
+        <Typography
+          component="h3"
+          variant="h3"
+          fontFamily="BickleyScriptRegular"
+          color="primary.contrastText"
+          sx={{ marginTop: { xs: 4, md: 0 }, marginRight: { xs: 2, md: 4 } }}
+        >
+          #chabradildita
+        </Typography>
+      </Stack>
     </Box>
   );
 };

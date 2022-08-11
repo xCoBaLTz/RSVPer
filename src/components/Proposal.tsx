@@ -1,5 +1,5 @@
 import "../styles/Proposal.css";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Stack, Typography } from "@mui/material";
 
 interface Image {
   src: string;
@@ -74,18 +74,36 @@ const Proposal = () => {
         flexGrow={1}
       >
         {imagesArray.map((image: Image, index: number) => (
-          <Grid key={index}>
+          <Grid key={index} className="scene">
             <Box component="div" className="card">
-              <Box component="div" className="card__face card__face--front">
+              <Box component="div" className="card_face card_face-front">
                 <Box component="img" src={image.src} alt={image.alt} />
               </Box>
-              <Box component="div" className="card__face card__face--back">
+              <Box component="div" className="card_face card_face-back">
                 <Box component="img" src={image.srcBack} alt={image.altBack} />
               </Box>
             </Box>
           </Grid>
         ))}
       </Grid>
+      <Stack
+        width="100%"
+        bottom={0}
+        left={0}
+        right={0}
+        justifyContent="center"
+        alignItems="flex-end"
+      >
+        <Typography
+          component="h3"
+          variant="h3"
+          fontFamily="BickleyScriptRegular"
+          color="primary.contrastText"
+          sx={{ marginTop: { xs: 4, md: 0 }, marginRight: { xs: 2, md: 4 } }}
+        >
+          #chabradildita
+        </Typography>
+      </Stack>
     </Box>
   );
 };

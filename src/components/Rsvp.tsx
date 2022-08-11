@@ -131,6 +131,25 @@ const Rsvp = () => {
           Kindly submit your response by September 5, 2022
         </Typography>
       </Stack>
+      <Stack
+        position="fixed"
+        width="100%"
+        bottom={0}
+        left={0}
+        right={0}
+        justifyContent="center"
+        alignItems="flex-end"
+      >
+        <Typography
+          component="h3"
+          variant="h3"
+          fontFamily="BickleyScriptRegular"
+          color="primary.contrastText"
+          sx={{ marginRight: { xs: 2, md: 4 } }}
+        >
+          #chabradildita
+        </Typography>
+      </Stack>
     </Box>
   );
 };
