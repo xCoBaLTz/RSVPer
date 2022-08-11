@@ -113,7 +113,7 @@ const Contact = () => {
           color="primary.contrastText"
           sx={{ marginRight: { xs: 2, md: 4 } }}
         >
-          #chabradildita
+          #ChabraDilDita
         </Typography>
       </Stack>
     </Box>

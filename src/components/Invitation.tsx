@@ -63,7 +63,7 @@ const Invitation = () => {
           color="primary.contrastText"
           sx={{ marginTop: { xs: 4, md: 0 }, marginRight: { xs: 2, md: 4 } }}
         >
-          #chabradildita
+          #ChabraDilDita
         </Typography>
       </Stack>
     </Box>
