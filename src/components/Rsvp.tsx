@@ -53,6 +53,14 @@ const Rsvp = () => {
           Engagement Party
         </Typography>
         <Typography
+          component="h2"
+          variant="h2"
+          color="primary.contrastText"
+          fontFamily="BickleyScriptRegular"
+        >
+          Château Le Jardin
+        </Typography>
+        <Typography
           component="h3"
           variant="h3"
           color="primary.contrastText"

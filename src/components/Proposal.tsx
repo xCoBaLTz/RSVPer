@@ -34,6 +34,18 @@ const Proposal = () => {
       srcBack: "/assets/images/proposal4-back-min.jpeg",
       altBack: "Proposal picture 4 back",
     },
+    {
+      src: "/assets/images/proposal5-min.jpeg",
+      alt: "Proposal picture 5",
+      srcBack: "/assets/images/proposal5-back-min.jpeg",
+      altBack: "Proposal picture 5 back",
+    },
+    {
+      src: "/assets/images/proposal6-min.jpeg",
+      alt: "Proposal picture 6",
+      srcBack: "/assets/images/proposal6-back-min.jpeg",
+      altBack: "Proposal picture 6 back",
+    },
   ];
   return (
     <Box
@@ -48,33 +60,38 @@ const Proposal = () => {
       <Typography
         variant="h1"
         component="h1"
-        sx={{
-          fontFamily: "BickleyScriptRegular",
-          color: "primary.contrastText",
-        }}
+        fontFamily="BickleyScriptRegular"
+        color="primary.contrastText"
       >
         The Proposal
       </Typography>
       <Typography
         variant="h3"
         component="h3"
-        sx={{
-          fontFamily: "BickleyScriptRegular",
-          color: "primary.contrastText",
-        }}
+        fontFamily="BickleyScriptRegular"
+        color="primary.contrastText"
       >
         April 20, 2022
       </Typography>
       <Grid
         container
         columnGap={4}
-        rowGap={{ xs: 4, lg: 0 }}
+        rowGap={3}
         justifyContent="center"
         alignItems="center"
         flexGrow={1}
       >
         {imagesArray.map((image: Image, index: number) => (
-          <Grid key={index} className="scene">
+          <Grid
+            item
+            key={index}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            sx={{
+              perspective: "800px",
+            }}
+          >
             <Box component="div" className="card">
               <Box component="div" className="card_face card_face-front">
                 <Box component="img" src={image.src} alt={image.alt} />
@@ -99,7 +116,8 @@ const Proposal = () => {
           variant="h3"
           fontFamily="BickleyScriptRegular"
           color="primary.contrastText"
-          sx={{ marginTop: { xs: 4, md: 0 }, marginRight: { xs: 2, md: 4 } }}
+          marginTop={4}
+          sx={{ marginRight: { xs: 2, md: 4 } }}
         >
           #ChabraDilDita
         </Typography>

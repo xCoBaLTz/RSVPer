@@ -6,14 +6,14 @@ const Home = () => {
   const imageArray: number[] = [1, 2, 3];
   return (
     <Carousel
+      infiniteLoop
+      autoPlay
+      autoFocus
+      swipeable
+      useKeyboardArrows
       showStatus={false}
-      infiniteLoop={true}
-      autoPlay={true}
-      autoFocus={true}
       stopOnHover={false}
-      swipeable={true}
       showThumbs={false}
-      useKeyboardArrows={true}
     >
       {imageArray.map((value: number) => (
         <div key={value} className={`carousel slide-${value}`}></div>

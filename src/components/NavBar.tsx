@@ -11,6 +11,7 @@ const NavBar = () => {
     { name: "Proposal", route: "/proposal" },
     { name: "Invitation", route: "/invitation" },
     { name: "RSVP", route: "/rsvp" },
+    { name: "Location", route: "/location" },
     { name: "Contact", route: "/contact" },
   ];
 

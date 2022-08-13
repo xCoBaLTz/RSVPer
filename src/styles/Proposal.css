@@ -4,10 +4,6 @@ img {
     object-fit: cover;
 }
 
-.scene {
-    perspective: 800px;
-}
-
 .card {
     position: relative;
     width: 240px;

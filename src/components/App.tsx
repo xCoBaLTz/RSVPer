@@ -5,6 +5,7 @@ import { loadStarsPreset } from "tsparticles-preset-stars";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import { Route, Routes } from "react-router";
+import { Box } from "@mui/material";
 
 import NavBar from "./NavBar";
 import Proposal from "./Proposal";
@@ -14,7 +15,7 @@ import Contact from "./Contact";
 import Home from "./Home";
 import Login from "./Login";
 import RequireAuth from "./RequireAuth";
-import { Box } from "@mui/material";
+import Location from "./Location";
 
 const App = () => {
   const customInit: (engine: Engine) => Promise<void> = async (
@@ -46,6 +47,7 @@ const App = () => {
           <Route path="/invitation" element={<Invitation />} />
           <Route path="/login" element={<Login />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/location" element={<Location />} />
           <Route element={<RequireAuth />}>
             <Route path="/rsvp" element={<Rsvp />} />
           </Route>
