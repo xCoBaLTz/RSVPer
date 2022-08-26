@@ -7,7 +7,7 @@ const CheckToggleButton = styled(ToggleButton)(({ theme }) => ({
   color: theme.palette.primary.contrastText,
   backgroundColor: theme.palette.primary.main,
   "&.MuiToggleButton-root": {
-    "&:hover, &.Mui-focusVisible": {
+    "&:hover": {
       backgroundColor: alpha(green[800], 0.5),
     },
   },
