@@ -1,11 +1,22 @@
-import { Alert, Box, FormControlLabel, Stack, Typography } from "@mui/material";
+import {
+  Alert,
+  Box,
+  Stack,
+  ToggleButtonGroup,
+  Typography,
+} from "@mui/material";
+import CheckIcon from "@mui/icons-material/Check";
+import CloseIcon from "@mui/icons-material/Close";
+import RemoveIcon from "@mui/icons-material/Remove";
 import { useState } from "react";
 import {
   useGetInvitesQuery,
   useUpdateInviteMutation,
 } from "../api/inviteApiSlice";
 import { Invite } from "../redux/interfaces/inviteState";
-import CustomSwitch from "./CustomSwitch";
+import CheckToggleButton from "./CheckToggleButton";
+import NeutralToggleButton from "./NeutralToggleButton";
+import CrossToggleButton from "./CrossToggleButton";
 
 const Rsvp = () => {
   let { data, error } = useGetInvitesQuery();
@@ -23,10 +34,10 @@ const Rsvp = () => {
     setErrMessage(errMsg || "");
   }
 
-  const handleRsvpChange = (invite: Invite) => {
+  const handleRsvpChange = (invite: Invite, rsvpStatus: boolean) => {
     const newInvite = {
       ...invite,
-      rsvpStatus: !invite.rsvpStatus,
+      rsvpStatus,
     } as Invite;
 
     updateInvite(newInvite)
@@ -114,17 +125,22 @@ const Rsvp = () => {
                 >
                   {invite.firstName} {invite.lastName}
                 </Typography>
-                <FormControlLabel
-                  sx={{ color: "primary.contrastText" }}
-                  control={
-                    <CustomSwitch
-                      checked={invite.rsvpStatus}
-                      onChange={() => handleRsvpChange(invite)}
-                      inputProps={{ "aria-label": "controlled" }}
-                    />
-                  }
-                  label={invite.rsvpStatus ? "Yes" : "No"}
-                />
+                <ToggleButtonGroup
+                  value={invite.rsvpStatus}
+                  exclusive
+                  onChange={(event, value) => handleRsvpChange(invite, value)}
+                  aria-label="rsvp status"
+                >
+                  <CheckToggleButton value={true} aria-label="Yes">
+                    <CheckIcon />
+                  </CheckToggleButton>
+                  <NeutralToggleButton disabled value={null} aria-label="Null">
+                    <RemoveIcon />
+                  </NeutralToggleButton>
+                  <CrossToggleButton value={false} aria-label="No">
+                    <CloseIcon />
+                  </CrossToggleButton>
+                </ToggleButtonGroup>
               </Stack>
             );
           })
