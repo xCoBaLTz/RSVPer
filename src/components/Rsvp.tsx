@@ -35,6 +35,10 @@ const Rsvp = () => {
   }
 
   const handleRsvpChange = (invite: Invite, rsvpStatus: boolean) => {
+    if (rsvpStatus == null) {
+      return;
+    }
+
     const newInvite = {
       ...invite,
       rsvpStatus,
