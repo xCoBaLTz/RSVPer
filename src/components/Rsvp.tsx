@@ -9,10 +9,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { useState } from "react";
-import {
-  useGetInvitesQuery,
-  useUpdateInviteMutation,
-} from "../api/inviteApiSlice";
+import { useGetInvitesQuery } from "../api/inviteApiSlice";
 import { Invite } from "../redux/interfaces/inviteState";
 import CheckToggleButton from "./CheckToggleButton";
 import NeutralToggleButton from "./NeutralToggleButton";
@@ -20,7 +17,6 @@ import CrossToggleButton from "./CrossToggleButton";
 
 const Rsvp = () => {
   let { data, error } = useGetInvitesQuery();
-  const [updateInvite] = useUpdateInviteMutation();
 
   const [errMessage, setErrMessage] = useState("");
 
@@ -39,16 +35,18 @@ const Rsvp = () => {
       return;
     }
 
-    const newInvite = {
-      ...invite,
-      rsvpStatus,
-    } as Invite;
+    // Reservations are now closed
 
-    updateInvite(newInvite)
-      .unwrap()
-      .catch((error) => {
-        setErrMessage(error.data.detail);
-      });
+    // const newInvite = {
+    //   ...invite,
+    //   rsvpStatus,
+    // } as Invite;
+    //
+    // updateInvite(newInvite)
+    //   .unwrap()
+    //   .catch((error) => {
+    //     setErrMessage(error.data.detail);
+    //   });
   };
 
   return (
@@ -84,7 +82,7 @@ const Rsvp = () => {
           November 11, 2022
         </Typography>
         <Typography
-          marginBottom={8}
+          marginBottom={4}
           component="h3"
           variant="h3"
           color="primary.contrastText"
@@ -109,55 +107,72 @@ const Rsvp = () => {
             {errMessage}
           </Alert>
         ) : (
-          data?.map((invite: Invite, index: number) => {
-            return (
-              <Stack
-                key={index}
-                direction="row"
-                alignItems="center"
-                justifyContent="flex-start"
+          <Box>
+            <Stack>
+              <Alert
+                severity="warning"
                 sx={{
-                  width: { xs: "70vw", md: "60vm", lg: "45vw" },
+                  backgroundColor: "rgb(22 11 11)",
+                  color: "rgb(244 199 199)",
+                  margin: 2,
+                  fontSize: 20,
+                  minWidth: { xs: "90vw", md: "55vw", lg: "45vw" },
                 }}
               >
-                <Typography
-                  variant="h5"
-                  component="h5"
-                  color="primary.contrastText"
-                  paddingRight={2}
-                  flexGrow={1}
-                >
-                  {invite.firstName} {invite.lastName}
-                </Typography>
-                <ToggleButtonGroup
-                  value={invite.rsvpStatus}
-                  exclusive
-                  onChange={(event, value) => handleRsvpChange(invite, value)}
-                  aria-label="rsvp status"
-                >
-                  <CheckToggleButton value={true} aria-label="Yes">
-                    <CheckIcon />
-                  </CheckToggleButton>
-                  <NeutralToggleButton disabled value={null} aria-label="Null">
-                    <RemoveIcon />
-                  </NeutralToggleButton>
-                  <CrossToggleButton value={false} aria-label="No">
-                    <CloseIcon />
-                  </CrossToggleButton>
-                </ToggleButtonGroup>
-              </Stack>
-            );
-          })
+                It is now past the final RSVP date. If you are hoping to change
+                your attendance status for any reason, please contact Seanan
+                Chabra at (647) 564-2099.
+              </Alert>
+            </Stack>
+            <Stack alignItems="center" justifyContent="center">
+              {data?.map((invite: Invite, index: number) => {
+                return (
+                  <Stack
+                    key={index}
+                    direction="row"
+                    alignItems="center"
+                    justifyContent="flex-start"
+                    sx={{
+                      width: { xs: "70vw", md: "60vm", lg: "45vw" },
+                    }}
+                  >
+                    <Typography
+                      variant="h5"
+                      component="h5"
+                      color="primary.contrastText"
+                      paddingRight={2}
+                      flexGrow={1}
+                    >
+                      {invite.firstName} {invite.lastName}
+                    </Typography>
+                    <ToggleButtonGroup
+                      value={invite.rsvpStatus}
+                      exclusive
+                      onChange={(event, value) =>
+                        handleRsvpChange(invite, value)
+                      }
+                      aria-label="rsvp status"
+                    >
+                      <CheckToggleButton disabled value={true} aria-label="Yes">
+                        <CheckIcon />
+                      </CheckToggleButton>
+                      <NeutralToggleButton
+                        disabled
+                        value={null}
+                        aria-label="Null"
+                      >
+                        <RemoveIcon />
+                      </NeutralToggleButton>
+                      <CrossToggleButton disabled value={false} aria-label="No">
+                        <CloseIcon />
+                      </CrossToggleButton>
+                    </ToggleButtonGroup>
+                  </Stack>
+                );
+              })}
+            </Stack>
+          </Box>
         )}
-        <Typography
-          marginTop={4}
-          component="h4"
-          variant="h4"
-          color="primary.contrastText"
-          fontFamily="BickleyScriptRegular"
-        >
-          Kindly submit your response by September 5, 2022
-        </Typography>
       </Stack>
       <Stack
         position="fixed"
